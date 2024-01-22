@@ -59,15 +59,15 @@ print_color "green" "Environment variables are set."
 # Create connection script for Windows (.bat)
 print_color "blue" "Creating connection script for Windows..."
 echo "@echo off" > /workspace/connect_windows.bat
-echo "set PASSWORD=$root_password" >> /workspace/connect_windows.bat
-echo "ssh -p %PASSWORD% ssh root@$RUNPOD_PUBLIC_IP -p $RUNPOD_TCP_PORT_22" >> /workspace/connect_windows.bat
+echo "echo Root password: $root_password" >> /workspace/connect_windows.bat
+echo "ssh root@$RUNPOD_PUBLIC_IP -p $RUNPOD_TCP_PORT_22" >> /workspace/connect_windows.bat
 print_color "green" "Windows connection script created in /workspace."
 
 # Create connection script for Linux/Mac (.sh)
 print_color "blue" "Creating connection script for Linux/Mac..."
 echo "#!/bin/bash" > /workspace/connect_linux.sh
-echo "PASSWORD=$root_password" >> /workspace/connect_linux.sh
-echo "ssh -p \$PASSWORD ssh root@$RUNPOD_PUBLIC_IP -p $RUNPOD_TCP_PORT_22" >> /workspace/connect_linux.sh
+echo "echo Root password: $root_password" >> /workspace/connect_linux.sh
+echo "ssh root@$RUNPOD_PUBLIC_IP -p $RUNPOD_TCP_PORT_22" >> /workspace/connect_linux.sh
 chmod +x /workspace/connect_linux.sh
 print_color "green" "Linux/Mac connection script created in /workspace."
 
