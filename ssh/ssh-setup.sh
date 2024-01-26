@@ -38,7 +38,7 @@ fi
 print_color "blue" "Configuring SSH to allow root login with a password..."
 sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 sed -i 's/#PasswordAuthentication no/PasswordAuthentication yes/' /etc/ssh/sshd_config
-service ssh restart || systemctl restart sshd
+service ssh restart
 print_color "green" "SSH Configuration Updated."
 
 # Generate random password for root and save it
